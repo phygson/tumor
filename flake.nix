@@ -13,9 +13,10 @@
   let
     configuration = { pkgs, ... }: {
       environment.systemPackages =
-        with pkgs; [ 
-            neovim
+        with pkgs; [
+	    neovim
 	    git
+	    spoofdpi	    
         ];
 
       nix.settings.experimental-features = "nix-command flakes";

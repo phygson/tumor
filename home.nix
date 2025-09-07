@@ -28,6 +28,7 @@
     functions = {
       cdnix = "cd /etc/nix-darwin";
       dswitch = "sudo darwin-rebuild switch";
+      sdpi = "spoofdpi -dns-addr 9.9.9.9 -enable-doh -window-size=1";
     };
   };
 }
