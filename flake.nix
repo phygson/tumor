@@ -29,7 +29,7 @@
             home-manager.users.phygson = ./home.nix;
             home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
           }
-          ./configuration.nix
+          ./hosts/liveer
         ];
       };
     };
