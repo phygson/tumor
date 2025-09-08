@@ -4,6 +4,7 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "phygson";
+  home.homeDirectory = "/Users/phygson";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -31,5 +32,15 @@
       sdpi = "spoofdpi -dns-addr 9.9.9.9 -enable-doh -window-size=1";
     };
   };
+  programs.obsidian = {
+    enable = true;
+    vaults.brain = {
+      enable = true;
+      target = "Documents/brain";
+    };
+  };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
-
