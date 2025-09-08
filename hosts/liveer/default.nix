@@ -4,6 +4,7 @@
     neovim
     git
     spoofdpi
+    obsidian
   ];
 
   programs.fish.enable = true;

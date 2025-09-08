@@ -21,13 +21,6 @@
       sdpi = "spoofdpi -dns-addr 9.9.9.9 -enable-doh -window-size=1";
     };
   };
-  programs.obsidian = {
-    enable = true;
-    vaults.brain = {
-      enable = true;
-      target = "Documents/brain";
-    };
-  };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
