@@ -5,6 +5,8 @@
     git
     spoofdpi
     obsidian
+    qbittorrent
+    wget
   ];
 
   programs.fish.enable = true;
@@ -12,4 +14,6 @@
   users.users.phygson = {
     home = "/Users/phygson";
   };
+  # services.yabai.enable = true;
+  system.primaryUser = "phygson";
 }

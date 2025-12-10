@@ -18,8 +18,19 @@
     functions = {
       cdnix = "cd /etc/nix-darwin";
       dswitch = "sudo darwin-rebuild switch";
-      sdpi = "spoofdpi -dns-addr 9.9.9.9 -enable-doh -window-size=1";
+      sdpi = "spoofdpi -enable-doh -window-size=1";
     };
+    plugins = [
+      {
+        name = "z";
+        src = pkgs.fetchFromGitHub {
+          owner = "pure-fish";
+          repo = "pure";
+          rev = "b8ae744d8489b66a387ce13ae17005d510333546";
+          sha256 = "sha256-2UEIvlm8D11cMkz1GvaSBpaauZALwYZR1Q4Xd7/I4FQ=";
+        };
+      }
+    ];
   };
   programs.direnv = {
     enable = true;
