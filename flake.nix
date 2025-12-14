@@ -27,6 +27,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.phygson = ./homes + "/phygson@liveer/default.nix";
+            home-manager.users.gram = ./homes + "/gram@liveer/default.nix";
             home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
           }
           ./hosts/liveer
