@@ -23,7 +23,9 @@
           self.outputs.darwinModules.nix
           mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
+          {}
           {
+            home-manager.backupFileExtension = ".hmb";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.phygson = ./homes + "/phygson@liveer/default.nix";

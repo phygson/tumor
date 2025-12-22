@@ -3,7 +3,7 @@
 {
   home.username = "phygson";
   home.homeDirectory = "/Users/phygson";
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
   programs.kitty = {
     enable = true;
     themeFile = "GruvboxMaterialDarkSoft";

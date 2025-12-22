@@ -14,6 +14,9 @@
   users.users.phygson = {
     home = "/Users/phygson";
   };
+  users.users.gram = {
+    home = "/Users/gram";
+  };
   # services.yabai.enable = true;
   system.primaryUser = "phygson";
 }
