@@ -19,15 +19,15 @@
 	  inherit nixpkgs home-manager nix-darwin;
 	  system = "aarch64-darwin";
 	  users = ["phygson" "gram"];
+	  extraDarwinArgs = { inherit self; };
 	  extraDarwinModules = with inputs; [ 
 	    mac-app-util.darwinModules.default
-	    import ./modules/darwin/base
-	    import ./modules/darwin/touchID
-	    import ./modules/mixed/nix
+	    ./modules/darwin/base
+	    ./modules/darwin/touchID
+	    ./modules/mixed/nix
 	  ];
 	  extraHomeManagerModules = with inputs; [ 
 	    mac-app-util.homeManagerModules.default 
-	    import ./modules/mixed/nix
 	  ];
 	};
       };

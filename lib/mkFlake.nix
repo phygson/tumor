@@ -20,6 +20,7 @@
   darwinConfigurations = builtins.mapAttrs (hostname: value:
     value.nix-darwin.lib.darwinSystem {
       system = value.system;
+      specialArgs = value.extraDarwinArgs;
       modules = [
         ../hosts/${value.system}/${hostname}
         value.home-manager.darwinModules.home-manager

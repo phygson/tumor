@@ -22,4 +22,5 @@
   };
   # services.yabai.enable = true;
   system.primaryUser = "phygson";
+  system.stateVersion = 6;
 }
