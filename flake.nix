@@ -1,42 +1,37 @@
 {
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      nix-darwin,
-      mac-app-util,
-      ...
-    }:
-    {
-      darwinModules = {
-        touchID = import ./modules/darwin/touchID;
-        base = import ./modules/darwin/base;
-        nix = import ./modules/mixed/nix;
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    nix-darwin,
+    ...
+  }:
+    import ./lib/mkFlake.nix {
+      nixosConfigurations = {
+        walter = {
+          inherit nixpkgs home-manager;
+          system = "x86_64-linux";
+          users = ["phygson"];
+        };
       };
-      darwinConfigurations."liveer" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit self; };
-        modules = [
-          self.outputs.darwinModules.touchID
-          self.outputs.darwinModules.base
-          self.outputs.darwinModules.nix
-          mac-app-util.darwinModules.default
-          home-manager.darwinModules.home-manager
-          {}
-          {
-            home-manager.backupFileExtension = ".hmb";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.phygson = ./homes + "/phygson@liveer/default.nix";
-            home-manager.users.gram = ./homes + "/gram@liveer/default.nix";
-            home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
-          }
-          ./hosts/liveer
-        ];
+      darwinConfigurations = {
+        liveer = {
+	  inherit nixpkgs home-manager nix-darwin;
+	  system = "aarch64-darwin";
+	  users = ["phygson" "gram"];
+	  extraDarwinModules = with inputs; [ 
+	    mac-app-util.darwinModules.default
+	    import ./modules/darwin/base
+	    import ./modules/darwin/touchID
+	    import ./modules/mixed/nix
+	  ];
+	  extraHomeManagerModules = with inputs; [ 
+	    mac-app-util.homeManagerModules.default 
+	    import ./modules/mixed/nix
+	  ];
+	};
       };
     };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";

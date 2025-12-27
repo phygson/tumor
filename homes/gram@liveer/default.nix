@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "gram";
   home.homeDirectory = "/Users/gram";
   home.stateVersion = "26.05";
@@ -12,7 +14,7 @@
       macos_quit_when_last_window_closed = true;
       shell = "/etc/profiles/per-user/gram/bin/fish -i";
     };
-  }; 
+  };
   programs.fish = {
     enable = true;
     functions = {
