@@ -19,8 +19,8 @@
 	  inherit nixpkgs home-manager nix-darwin;
 	  system = "aarch64-darwin";
 	  users = ["phygson" "gram"];
-	  extraDarwinArgs = { inherit self; };
-	  extraDarwinModules = with inputs; [ 
+	  extraDarwinArgs = { inherit self inputs; };
+	  extraDarwinModules = with inputs; [
 	    mac-app-util.darwinModules.default
 	    ./modules/darwin/base
 	    ./modules/darwin/touchID
@@ -39,5 +39,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
+    spoofdpi.url = "github:xvzc/SpoofDPI";
+    spoofdpi.inputs.nixpkgs.follows = "nixpkgs";
   };
 }

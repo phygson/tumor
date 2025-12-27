@@ -20,7 +20,7 @@
     functions = {
       cdnix = "cd /etc/nix-darwin";
       dswitch = "sudo darwin-rebuild switch";
-      sdpi = "spoofdpi -enable-doh -window-size=1";
+      sdpi = "spoofdpi --system-proxy --https-disorder --dns-mode https doh";
     };
     plugins = [
       {

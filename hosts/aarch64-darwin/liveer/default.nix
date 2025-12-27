@@ -1,16 +1,16 @@
 {
   pkgs,
   self,
+  inputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
     neovim
     git
-    spoofdpi
     obsidian
     qbittorrent
     wget
-  ];
+  ] ++ [inputs.spoofdpi.packages.aarch64-darwin.default];
 
   programs.fish.enable = true;
   programs.direnv.enable = true;
