@@ -16,20 +16,20 @@
       };
       darwinConfigurations = {
         liveer = {
-	  inherit nixpkgs home-manager nix-darwin;
-	  system = "aarch64-darwin";
-	  users = ["phygson" "gram"];
-	  extraDarwinArgs = { inherit self inputs; };
-	  extraDarwinModules = with inputs; [
-	    mac-app-util.darwinModules.default
-	    ./modules/darwin/base
-	    ./modules/darwin/touchID
-	    ./modules/mixed/nix
-	  ];
-	  extraHomeManagerModules = with inputs; [ 
-	    mac-app-util.homeManagerModules.default 
-	  ];
-	};
+          inherit nixpkgs home-manager nix-darwin;
+          system = "aarch64-darwin";
+          users = ["phygson" "gram"];
+          extraDarwinArgs = {inherit self inputs;};
+          extraDarwinModules = with inputs; [
+            mac-app-util.darwinModules.default
+            ./modules/darwin/base
+            ./modules/darwin/touchID
+            ./modules/mixed/nix
+          ];
+          extraHomeManagerModules = with inputs; [
+            mac-app-util.homeManagerModules.default
+          ];
+        };
       };
     };
   inputs = {
