@@ -15,10 +15,13 @@
         };
       };
       darwinConfigurations = {
-        liveer = {
+        liveer = let
+          primaryUser = "phygson";
+        in {
           inherit nixpkgs home-manager nix-darwin;
           system = "aarch64-darwin";
-          users = ["phygson" "gram"];
+          users = [primaryUser "gram"];
+          primaryUser = primaryUser;
           extraDarwinArgs = {inherit self inputs;};
           extraDarwinModules = with inputs; [
             mac-app-util.darwinModules.default

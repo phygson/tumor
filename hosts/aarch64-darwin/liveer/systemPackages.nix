@@ -9,5 +9,6 @@
     obsidian
     qbittorrent
     wget
+    alejandra
   ];
 }

@@ -29,6 +29,14 @@
           ../hosts/${value.system}/${hostname}
           value.home-manager.darwinModules.home-manager
           {
+            users.users = builtins.listToAttrs (builtins.map (username: {
+                name = username;
+                value = {home = "/Users/${username}";};
+              })
+              value.users);
+            system.primaryUser = value.primaryUser;
+          }
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.sharedModules = value.extraHomeManagerModules;
