@@ -34,9 +34,8 @@
                 value = {home = "/Users/${username}";};
               })
               value.users);
-            system.primaryUser = value.primaryUser;
-          }
-          {
+            system.primaryUser = builtins.elemAt value.users 0;
+            system.stateVersion = value.stateVersion;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.sharedModules = value.extraHomeManagerModules;

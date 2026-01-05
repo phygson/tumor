@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -10,5 +6,6 @@
     qbittorrent
     wget
     alejandra
+    keka
   ];
 }
