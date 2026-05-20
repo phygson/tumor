@@ -11,13 +11,9 @@
     import ./lib/mkFlake.nix {
       nixosConfigurations = {
         walter = {
-          inherit nixpkgs home-manager;
-	  inherit inputs;
+          inherit nixpkgs home-manager nix-vscode-extensions;
           system = "x86_64-linux";
           users = ["phygson"];
-	  extraModules = [ 
-	    inputs.nix-index-database.nixosModules.default 
-	  ];
         };
       };
       darwinConfigurations = {
@@ -51,9 +47,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    comfyui-nix.url = "github:utensils/comfyui-nix";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
   };

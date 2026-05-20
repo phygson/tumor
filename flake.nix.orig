@@ -11,8 +11,12 @@
     import ./lib/mkFlake.nix {
       nixosConfigurations = {
         walter = {
+<<<<<<< HEAD
           inherit nixpkgs home-manager;
 	  inherit inputs;
+=======
+          inherit nixpkgs home-manager nix-vscode-extensions;
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
           system = "x86_64-linux";
           users = ["phygson"];
 	  extraModules = [ 
@@ -51,10 +55,13 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
+<<<<<<< HEAD
     comfyui-nix.url = "github:utensils/comfyui-nix";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+=======
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
   };
 }
