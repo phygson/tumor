@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.username = "phygson";
   home.homeDirectory = "/Users/phygson";
   home.stateVersion = "26.05";
@@ -38,5 +34,32 @@
     enable = true;
     nix-direnv.enable = true;
   };
-  programs.gh.enable = true;
+  programs.vscodium = {
+    enable = true;
+    profiles.default = {
+      extensions =
+        (with pkgs.vscode-marketplace; [
+          tboox.xmake-vscode
+        ])
+        ++ (with pkgs.vscode-extensions; [
+          ms-vscode.cpptools
+          llvm-vs-code-extensions.vscode-clangd
+          mkhl.direnv
+          jnoortheen.nix-ide
+        ]);
+      enableUpdateCheck = false;
+      userSettings = {
+        "C_Cpp.intelliSenseEngine" = "disabled";
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
+        "nix.serverSettings" = {
+          nixd = {
+            formatting = {
+              command = ["alejandra"];
+            };
+          };
+        };
+      };
+    };
+  };
 }
