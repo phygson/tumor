@@ -5,6 +5,7 @@
   nixosConfigurations = builtins.mapAttrs (hostname: value:
     value.nixpkgs.lib.nixosSystem {
       system = value.system;
+      specialArgs.inputs = value.inputs;
       modules = [
         ../hosts/${value.system}/${hostname}
         value.home-manager.nixosModules.home-manager
@@ -17,7 +18,7 @@
             })
             value.users);
         }
-      ];
+      ] ++ value.extraModules;
     })
   nixosConfigurations;
   darwinConfigurations = builtins.mapAttrs (hostname: value:

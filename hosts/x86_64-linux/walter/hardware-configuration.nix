@@ -12,35 +12,41 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "uas" "sd_mod"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/mapper/walter";
+    device = "/dev/mapper/heart";
     fsType = "btrfs";
-    options = ["subvol=@nixos" "compress=zstd" "noatime"];
+    options = ["subvol=@" "noatime" "space_cache=v2"];
   };
 
-  boot.initrd.luks.devices."walter".device = "/dev/disk/by-uuid/be0430cb-1302-410e-967f-dab8d3c126a4";
+  boot.initrd.luks.devices."heart".device = "/dev/disk/by-uuid/6fda77c2-6fee-4d9f-b29e-a56625d8cf8b";
 
   fileSystems."/home" = {
-    device = "/dev/mapper/walter";
+    device = "/dev/mapper/heart";
     fsType = "btrfs";
-    options = ["subvol=@nixos_home" "compress=zstd" "noatime"];
+    options = ["subvol=@home" "space_cache=v2" "noatime"];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/mapper/walter";
+    device = "/dev/mapper/heart";
     fsType = "btrfs";
-    options = ["subvol=@nixos_store" "compress=zstd" "noatime"];
+    options = ["subvol=@nix" "space_cache=v2" "noatime"];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/56FC-6EF0";
+    device = "/dev/disk/by-uuid/EAA9-3897";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
+  };
+
+  fileSystems."/smth" = {
+    device = "/dev/disk/by-label/smth";
+    fsType = "btrfs";
+    options = [ "subvol=@" "noatime" "compress=zstd:1" "discard=async" ];
   };
 
   swapDevices = [];
