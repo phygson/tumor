@@ -120,11 +120,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1776695811,
         "narHash": "sha256-UPO3SFTbmxTOiioO7j1d1Unus63+jO/6mNNS+lsgjBQ=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "0a8d50edf28d537ce7538fbbf207fa7939d41abc",
+=======
+        "lastModified": 1778876681,
+        "narHash": "sha256-9XOIxYLBp+sJsPWNnNyk1aVfYXuuRJZ4Anpplm9Tn8g=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "c7fad8197070948d8aa02cb8922240ee129cab2e",
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
         "type": "github"
       },
       "original": {
@@ -163,11 +171,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1775037210,
         "narHash": "sha256-KM2WYj6EA7M/FVZVCl3rqWY+TFV5QzSyyGE2gQxeODU=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
         "rev": "06648f4902343228ce2de79f291dd5a58ee12146",
+=======
+        "lastModified": 1777780666,
+        "narHash": "sha256-8wURyQMdDkGUarSTKOGdCuFfYiwa3HbzwscUfn3STDE=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "8c62fba0854ba15c8917aed18894dbccb48a3777",
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
         "type": "github"
       },
       "original": {
@@ -177,12 +193,34 @@
         "type": "github"
       }
     },
+<<<<<<< HEAD
     "nix-index-database": {
+=======
+    "nix-vscode-extensions": {
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
+<<<<<<< HEAD
+=======
+      "locked": {
+        "lastModified": 1778817444,
+        "narHash": "sha256-xsMrbVS8AQN5R4yUOUutaEvmhj6Wwcej+4oGebUJ6S8=",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "rev": "4c7363877370df92f9d0f3d7283add16fec8c596",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
       "locked": {
         "lastModified": 1777181277,
         "narHash": "sha256-yVJbd07ortDRAttDFmDV5p220aOLTHgVAx//0nW/xW8=",
@@ -228,6 +266,7 @@
         "type": "github"
       }
     },
+<<<<<<< HEAD
     "nixpkgs-lib_2": {
       "locked": {
         "lastModified": 1765674936,
@@ -240,6 +279,21 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+=======
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1778796133,
+        "narHash": "sha256-g4vNiKFr+tfsdtwPKb89+5hayAJSFrGsxyOYf21f9m4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "503504ad2d361f6acba7fdad2cbf0869321871aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-25.11-darwin",
+        "repo": "nixpkgs",
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
         "type": "github"
       }
     },
@@ -309,11 +363,19 @@
     },
     "nixpkgs_6": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1776329215,
         "narHash": "sha256-a8BYi3mzoJ/AcJP8UldOx8emoPRLeWqALZWu4ZvjPXw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "b86751bc4085f48661017fa226dee99fab6c651b",
+=======
+        "lastModified": 1778794387,
+        "narHash": "sha256-BL04pOS9453Awkeb9f90XBJXBSkWxN+vB7HIgnL0iMM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8a1b0127302ea51e05bf4ea5a291743fac442406",
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
         "type": "github"
       },
       "original": {
@@ -329,8 +391,14 @@
         "home-manager": "home-manager",
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin",
+<<<<<<< HEAD
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_6"
+=======
+        "nix-vscode-extensions": "nix-vscode-extensions",
+        "nixpkgs": "nixpkgs_5",
+        "nixpkgs-stable": "nixpkgs-stable"
+>>>>>>> 3f00124ab1fc2417e6b3444e69f15d32184d2be6
       }
     },
     "systems": {

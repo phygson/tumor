@@ -12,7 +12,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users = builtins.listToAttrs (builtins.map (username: {
+          home-manager.users = builtins.listToAttrs (map (username: {
               name = username;
               value = ../homes + "/${username}@${hostname}";
             })
@@ -28,9 +28,12 @@
       modules =
         [
           ../hosts/${value.system}/${hostname}
+          {
+            nixpkgs.overlays = value.overlays;
+          }
           value.home-manager.darwinModules.home-manager
           {
-            users.users = builtins.listToAttrs (builtins.map (username: {
+            users.users = builtins.listToAttrs (map (username: {
                 name = username;
                 value = {home = "/Users/${username}";};
               })
@@ -40,7 +43,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.sharedModules = value.extraHomeManagerModules;
-            home-manager.users = builtins.listToAttrs (builtins.map (username: {
+            home-manager.users = builtins.listToAttrs (map (username: {
                 name = username;
                 value = ../homes + "/${username}@${hostname}";
               })
