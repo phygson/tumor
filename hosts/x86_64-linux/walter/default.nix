@@ -108,8 +108,6 @@
     kitty
     git
     shadowsocks-libev
-    ckan
-    lutris
     prismlauncher
     qbittorrent
     distrobox
