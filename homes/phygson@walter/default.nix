@@ -7,7 +7,7 @@
   # paths it should manage.
   home.username = "phygson";
   home.homeDirectory = "/home/phygson";
-  home.packages = with pkgs; [protonup-qt rose-pine-hyprcursor];
+  home.packages = with pkgs; [protonup-qt rose-pine-hyprcursor telegram-desktop];
 
   programs.gh = {
     enable = true;
@@ -45,68 +45,38 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
-    settings = {
-      #exec-once = [ "systemctl --user start hyprpaper" ];
-      monitor = "DP-2, 1920x1080@60, 0x0, 1";
-      "$mod" = "SUPER";
-      bind = [
-        "$mod, L, exec, hyprlock"
-        "$mod, D, exec, wofi --show drun"
-        "$mod, B, exec, firefox"
-	"$mod, F, exec, kitty fish -i -c y"
-        "$mod, RETURN, exec, kitty"
-        "$mod, W, killactive"
-	"$mod, V, togglefloating"
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        "$mod SHIFT, 1, movetoworkspace, 1"
-        "$mod SHIFT, 2, movetoworkspace, 2"
-        "$mod SHIFT, 3, movetoworkspace, 3"
-        "$mod SHIFT, 4, movetoworkspace, 4"
-        "$mod SHIFT, 5, movetoworkspace, 5"
-        "$mod SHIFT, 6, movetoworkspace, 6"
-        "$mod SHIFT, 7, movetoworkspace, 7"
-        "$mod SHIFT, 8, movetoworkspace, 8"
-        "$mod SHIFT, 9, movetoworkspace, 9"
-	"$mod, mouse_down, workspace, e+1"
-	"$mod, mouse_up, workspace, e-1"
-      ];
-      bindm = [
-        "$mod, mouse:272, movewindow"
-	"$mod, mouse:273, resizewindow"
-      ];
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
-        "HYPRCURSOR_SIZE,24"
-        "LIBVA_DRIVER_NAME,nvidia"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      ];
-      input = {
-        kb_layout = "us,ru";
-        kb_options = "grp:alt_shift_toggle";
-      };
-      windowrule = [ 
-        {
-	  name = "ff-fullscreen";
-	  "match:class" = "firefox";
-	  fullscreen = "on";
-        }
-	{
-	  name = "steam-fullscreen";
-	  "match:class" = "steam";
-	  fullscreen = "on";
-	}
-      ];
-    };
+    extraConfig = ''
+hl.config({
+    input = {
+        kb_layout  = "us,ru",
+        kb_options = "grp:alt_shift_toggle",
+    },
+})
+
+hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+
+hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("SUPER + D", hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind("SUPER + B", hl.dsp.exec_cmd("firefox"))
+hl.bind("SUPER + F", hl.dsp.exec_cmd("kitty fish -i -c y"))
+
+hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty"))
+hl.bind("SUPER + W", hl.dsp.window.close())
+hl.bind("SUPER + V", hl.dsp.window.float({ action = "toggle" }))
+
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind("SUPER + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind("SUPER + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+end
+
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
+    '';
   };
   programs.hyprlock = {
     enable = true;

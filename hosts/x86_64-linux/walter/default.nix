@@ -65,8 +65,8 @@
     modesetting.enable = true;
     open = true;
     nvidiaSettings = false;
-    nvidiaPersistenced = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    #nvidiaPersistenced = true;
+   # package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
   programs.uwsm = {
     enable =true;
@@ -82,12 +82,12 @@
     protontricks.enable = true;
     gamescopeSession.enable = true;
   };
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
+  #services.sunshine = {
+  #  enable = true;
+  #  autoStart = true;
+  #  capSysAdmin = true;
+  #  openFirewall = true;
+  #};
 
   users.users.phygson = {
     isNormalUser = true;
@@ -110,7 +110,6 @@
     shadowsocks-libev
     prismlauncher
     qbittorrent
-    distrobox
     polkit_gnome
     inputs.comfyui-nix.packages.${pkgs.stdenv.hostPlatform.system}.cuda
     libreoffice-fresh
